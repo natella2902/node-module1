@@ -1,0 +1,20 @@
+{
+  "name": "node-project",
+  "version": "1.0.1",
+  "description": "my study project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "node"
+  ],
+  "author": "Nataliya Zhelonkina <n.jelonkina@mail.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/yargs": "^17.0.8",
+    "chalk": "^4.1.2",
+    "yargs": "^17.3.1"
+  }
+}
