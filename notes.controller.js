@@ -4,6 +4,10 @@ const chalk = require('chalk')
 
 const pathNotes = path.join(__dirname, 'db.json')
 
+async function saveNotes(data) {
+    await fs.writeFile(pathNotes, JSON.stringify(data))
+}
+
 async function addNote(title) {
 const notes = require(pathNotes)
     const note = {
@@ -11,7 +15,7 @@ const notes = require(pathNotes)
         id: Date.now().toString()
     }
     notes.push(note)
-    await fs.writeFile(pathNotes, JSON.stringify(notes))
+    await saveNotes(notes)
 }
 
 async function getNotes() {
@@ -20,9 +24,9 @@ async function getNotes() {
 }
 
 async function removeNote(id) {
-    const notes = await fs.readFile(pathNotes, { encoding: 'utf-8'});
-    const newNotes = JSON.parse(notes).filter( note => (note.id == id))
-    await fs.writeFile(pathNotes, JSON.stringify(newNotes))
+    const notes = await getNotes()
+    const newNotes = notes.filter( note => (note.id !== id))
+    await saveNotes(newNotes)
 }
 
 module.exports = {
