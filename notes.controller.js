@@ -29,6 +29,13 @@ async function removeNote(id) {
     await saveNotes(newNotes)
 }
 
+async function editNote(payload) {
+    const notes = await getNotes()
+    const elIndex = notes.findIndex(note => note.id === payload.id)
+    notes[elIndex] = payload
+    await saveNotes(notes)
+}
+
 module.exports = {
-    addNote, getNotes, removeNote
+    addNote, getNotes, removeNote, editNote
 }
